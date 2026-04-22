@@ -59,3 +59,35 @@
     display: flex;
     justify-content: space-between;
 }
+
+/* Container de Busca */
+.search-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.search-container i { color: var(--text-muted); margin-right: 15px; }
+.search-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    background: transparent;
+}
+
+
+
+
+/* Animação */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in { animation: slideUp 0.3s ease-out; }

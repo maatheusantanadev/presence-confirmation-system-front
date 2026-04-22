@@ -12,12 +12,12 @@
     <aside class="sidebar">
         <div class="sidebar-header">
             <h2>Sistema Presença</h2>
-        </div>
+        </div>a
         <nav class="sidebar-nav">
             <a href="Dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
             <a href="Turmas.html" class="active"><i class="fas fa-users-rectangle"></i> Turmas</a>
             <a href="Alunos.html"><i class="fas fa-user-graduate"></i> Alunos</a>
-            <a href="Presencas.html"><i class="fas fa-clipboard-check"></i> Presenças</a>
+            <a href="Listagem_presenca.html"><i class="fas fa-clipboard-check"></i> Presenças</a>
         </nav>
         <div class="sidebar-footer">
             <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a>
@@ -36,7 +36,7 @@
         </header>
 
         <section class="content-section">
-            <div class="search-bar">
+            <div class="search-container">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchGroup" placeholder="Buscar turma pelo nome...">
             </div>
@@ -52,15 +52,19 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2 id="modalGroupName">Nome da Turma</h2>
-                <span class="badge" id="modalGroupBadge">ID: 00</span>
             </div>
+            <br>
             <hr>
+            <br>
             <div class="modal-body">
                 <div class="info-section">
                     <h3><i class="fas fa-chalkboard-teacher"></i> Professor Responsável</h3>
+                    <br>
                     <p id="modalProfessorName">Nome do Professor</p>
-                    <small id="modalProfessorCPF">CPF: 000.000.000-00</small>
                 </div>
+                <br>
+                <hr>
+                <br>
 
                 <div class="info-section">
                     <h3><i class="fas fa-users"></i> Alunos Matriculados</h3>

@@ -1,28 +1,22 @@
-:root {
-    --primary: #2563eb;
-    --success: #16a34a;
-    --bg-light: #f8fafc;
-    --border: #e2e8f0;
-}
+/* Não repetimos Reset e Sidebar aqui, pois já estão no Dashboard.css */
 
 .presence-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-top: 2rem;
 }
 
 .group-card {
-    background: white;
+    background: var(--white);
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.05);
     border: 1px solid var(--border);
     overflow: hidden;
     animation: slideUp 0.4s ease forwards;
 }
 
 .group-header {
-    background: #f1f5f9;
+    background: #f8fafc;
     padding: 1.2rem 1.5rem;
     border-bottom: 1px solid var(--border);
     display: flex;
@@ -31,7 +25,7 @@
 }
 
 .group-header h3 {
-    color: var(--primary);
+    color: var(--primary-blue);
     margin: 0;
     font-size: 1.1rem;
     display: flex;
@@ -49,39 +43,60 @@
     padding: 1rem 1.5rem;
     font-size: 0.8rem;
     text-transform: uppercase;
-    color: #64748b;
+    color: var(--text-muted);
     background: #fafafa;
+    border-bottom: 2px solid var(--border);
 }
 
 .presence-table td {
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid var(--border);
     font-size: 0.95rem;
+    color: var(--text-main);
 }
 
 .status-badge {
     background: #dcfce7;
-    color: var(--success);
+    color: #16a34a;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 .btn-refresh {
-    background: var(--primary);
+    background: var(--primary-blue);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 0.8rem 1.5rem;
     border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
-.btn-refresh:hover { background: #1d4ed8; }
+.btn-refresh:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+}
+
+
+.loading-state {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-muted);
+}
+
+.loading-state i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+}
 
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }

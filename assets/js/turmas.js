@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             card.className = 'group-card';
             card.innerHTML = `
                 <h3>${group.name}</h3>
-                <p><i class="fas fa-user-tie"></i> Prof. CPF: ${group.professor_cpf}</p>
                 <span><i class="fas fa-graduation-cap"></i> Ver alunos</span>
             `;
             card.onclick = () => showGroupDetails(group);
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 3. Mostra o modal com Professor e Alunos
     function showGroupDetails(group) {
         document.getElementById('modalGroupName').textContent = group.name;
-        document.getElementById('modalProfessorName').textContent = `Professor (CPF): ${group.professor_cpf}`;
+        document.getElementById('modalProfessorName').textContent = `CPF: ${group.professor_cpf}`;
 
         const list = document.getElementById('modalStudentList');
         list.innerHTML = '';
