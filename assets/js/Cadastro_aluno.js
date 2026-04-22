@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 alert('Aluno cadastrado com sucesso!');
-                window.location.href = 'alunos.html';
+                window.location.href = 'Alunos.html';
             } else {
                 const errorDetail = await response.json();
                 alert("Erro ao salvar: " + (errorDetail.detail || "Verifique os dados."));
