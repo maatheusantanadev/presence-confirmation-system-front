@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // redireciona (opcional)
         setTimeout(() => {
-          window.location.href = 'dashboard.html';
+          window.location.href = 'Dashboard.html';
         }, 1000);
 
       } else {

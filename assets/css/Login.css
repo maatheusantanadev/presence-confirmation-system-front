@@ -120,3 +120,33 @@ body {
 .message.error {
   color: #dc2626; /* Vermelho erro */
 }
+
+/* Estilo para o link de cadastro abaixo do formulário */
+.footer-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b; /* Cor cinza suave */
+}
+
+.footer-links p {
+  margin: 0;
+}
+
+.footer-links a {
+  color: #2563eb; /* Azul do seu sistema */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Ajuste na mensagem de erro/sucesso para não bater no link */
+.message {
+  margin-top: 1rem;
+  min-height: 1.2rem;
+}
