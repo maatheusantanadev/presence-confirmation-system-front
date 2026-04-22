@@ -1,13 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // Declaramos o token logo no início do escopo
-    const token = localStorage.getItem('access_token');
-
-    // Se o token não existir, nem tenta rodar o resto
-    if (!token) {
-        console.error("Token não encontrado!");
-        window.location.href = 'login.html';
-        return;
-    }
 
     const studentInput = document.getElementById('studentSearch');
     const groupSelect = document.getElementById('groupSelect');
@@ -20,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function carregarTurmas() {
         try {
             const response = await fetch('http://localhost:8000/groups', {
-                headers: { 'Authorization': `Bearer ${token}` } // Aqui ele usa o token local
             });
             if (response.ok) {
                 const turmas = await response.json();
