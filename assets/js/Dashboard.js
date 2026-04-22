@@ -73,7 +73,7 @@ function generateAttendanceQRCode() {
 
     // Defina a URL da sua tela de registro (ex: registrar_presenca.html)
     // Se estiver em rede local, use o IP do seu Mac, ex: http://192.168.1.5:5500/presenca_aluno.html
-    const registrationUrl = `${window.location.origin}/presenca_aluno.html`;
+    const registrationUrl = `${window.location.origin}/Registrar_presenca.html`;
 
     new QRCode(qrContainer, {
         text: registrationUrl,
