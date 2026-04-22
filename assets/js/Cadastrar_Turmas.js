@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (response.ok) {
                 alert("Turma criada com sucesso!");
-                window.location.href = 'turmas.html';
+                window.location.href = 'Turmas.html';
             } else {
                 const err = await response.json();
                 alert("Erro: " + (err.detail || "Falha ao criar turma."));
