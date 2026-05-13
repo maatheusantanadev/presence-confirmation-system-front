@@ -66,7 +66,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
             localStorage.setItem('user_cpf', cpfClean);
 
             setTimeout(() => {
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
             }, 2000);
         } else {
             apiResponse.className = "message error";
