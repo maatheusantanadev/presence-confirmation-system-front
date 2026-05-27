@@ -1,5 +1,5 @@
 // ===== CONSTANTES GLOBAIS =====
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://presence-confirmation-system.onrender.com";
 
 const video = document.getElementById("video");
 const message = document.getElementById("message");

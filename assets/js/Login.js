@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       formData.append('username', username);
       formData.append('password', password);
 
-      const response = await fetch('http://localhost:8000/login', {
+      const response = await fetch('https://presence-confirmation-system.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

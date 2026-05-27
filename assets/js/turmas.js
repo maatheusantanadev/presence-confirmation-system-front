@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function fetchGroups() {
         const token = localStorage.getItem('access_token');
         try {
-            const response = await fetch('http://localhost:8000/groups/', {
+            const response = await fetch('https://presence-confirmation-system.onrender.com/groups/', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {

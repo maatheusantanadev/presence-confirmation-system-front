@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const token = localStorage.getItem('access_token');
 
         try {
-            const response = await fetch('http://localhost:8000/students', {
+            const response = await fetch('https://presence-confirmation-system.onrender.com/students', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -70,7 +70,7 @@ async function excluirAluno(id) {
     if(confirm('Tem certeza que deseja remover este aluno?')) {
         const token = localStorage.getItem('access_token');
         try {
-            const response = await fetch(`http://localhost:8000/students/${id}`, {
+            const response = await fetch('https://presence-confirmation-system.onrender.com/${id}', {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
