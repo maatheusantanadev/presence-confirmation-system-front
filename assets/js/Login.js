@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       formData.append('username', username);
       formData.append('password', password);
 
-      const response = await fetch('c/login', {
+      const response = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
