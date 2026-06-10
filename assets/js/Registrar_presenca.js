@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. Carregar Turmas
     async function carregarTurmas() {
         try {
-            const response = await fetch('https://presence-confirmation-system.onrender.com/groups', {
+            const response = await fetch('http://localhost:8000/groups', {
             });
             if (response.ok) {
                 const turmas = await response.json();
@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 2. Carregar Alunos
     async function carregarAlunos() {
         try {
-            const response = await fetch('https://presence-confirmation-system.onrender.com/students', {
-                headers: { 'Authorization': `Bearer ${token}` }
+            const response = await fetch('http://localhost:8000/students', {
             });
             if (response.ok) {
                 const data = await response.json();

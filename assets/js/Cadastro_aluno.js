@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('https://presence-confirmation-system.onrender.com/students', {
+            const response = await fetch('http://localhost:8000/students', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadStudents() {
         const token = localStorage.getItem('access_token');
         try {
-            const response = await fetch('https://presence-confirmation-system.onrender.com/students', {
+            const response = await fetch('http://localhost:8000/students', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (response.ok) {
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const token = localStorage.getItem('access_token');
         try {
-            const response = await fetch('https://presence-confirmation-system.onrender.com/groups', { // Removi a barra final aqui
+            const response = await fetch('http://localhost:8000/groups', { // Removi a barra final aqui
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

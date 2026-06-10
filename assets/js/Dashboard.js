@@ -23,7 +23,7 @@ async function loadStats() {
         const token = localStorage.getItem('access_token');
 
         // Chamada real para o backend
-        const response = await fetch('https://presence-confirmation-system.onrender.com/stats', {
+        const response = await fetch('http://localhost:8000/stats', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,

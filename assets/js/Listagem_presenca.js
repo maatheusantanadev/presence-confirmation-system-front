@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dateStart = document.getElementById('dateStart').value;
             const dateEnd = document.getElementById('dateEnd').value;
 
-            const response = await fetch('https://presence-confirmation-system.onrender.com/presence/history', {
+            const response = await fetch('http://localhost:8000/presence/history', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Accept': 'application/json'
