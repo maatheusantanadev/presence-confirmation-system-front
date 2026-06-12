@@ -32,7 +32,7 @@ async function loadStats() {
         });
 
         if (!response.ok) {
-            if(response.status === 401) window.location.href = 'login.html';
+            if(response.status === 401) window.location.href = 'index.html';
             throw new Error("Falha ao carregar estatísticas");
         }
 
