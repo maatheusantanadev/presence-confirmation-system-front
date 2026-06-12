@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchGroups() {
         try {
-            const response = await fetch('http://localhost:8000/groups');
+            const response = await fetch('https://presence-confirmation-system.onrender.com/groups');
 
             if (!response.ok) {
                 throw new Error(`Erro HTTP ${response.status}`);
