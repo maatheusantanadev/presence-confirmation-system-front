@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const tableBody = document.getElementById('presenceTableBody');
-    const noData = document.getElementById('noData');
-    const applyBtn = document.getElementById('applyFilters');
+    const container = document.getElementById('presenceContainer');
+    const refreshBtn = document.querySelector('.btn-refresh');
 
     const API_URL = 'https://presence-confirmation-system.onrender.com';
 
     async function fetchHistory() {
         setLoading(true);
-        try {
-            const nameFilter = document.getElementById('nameFilter').value.toLowerCase().trim();
 
+        try {
             const response = await fetch(`${API_URL}/presence/history`);
 
             if (!response.ok) {
@@ -18,80 +16,118 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const data = await response.json();
-            renderTable(data, nameFilter);
+
+            renderHistory(data);
 
         } catch (error) {
-            console.error("Erro na requisição:", error);
-            tableBody.innerHTML =
-                '<tr><td colspan="5" style="text-align:center;color:red;padding:20px;">Erro ao conectar com o servidor.</td></tr>';
-            noData.style.display = 'none';
+            console.error('Erro na requisição:', error);
+
+            container.innerHTML = `
+                <div class="group-card">
+                    <div class="group-header">
+                        <h3>Erro</h3>
+                    </div>
+                    <div style="padding:20px;color:red">
+                        Não foi possível carregar os registros.
+                    </div>
+                </div>
+            `;
         } finally {
             setLoading(false);
         }
     }
 
-    function renderTable(data, filter) {
-        tableBody.innerHTML = '';
-        const entries = Object.entries(data || {});
-        let hasRecords = false;
+    function renderHistory(data) {
 
-        if (entries.length === 0) {
-            noData.style.display = 'block';
+        container.innerHTML = '';
+
+        const groups = Object.entries(data || {});
+
+        if (groups.length === 0) {
+            container.innerHTML = `
+                <div class="group-card">
+                    <div style="padding:20px;text-align:center">
+                        Nenhum registro encontrado.
+                    </div>
+                </div>
+            `;
             return;
         }
 
-        entries.forEach(([groupName, presences]) => {
-            const filtered = (presences || []).filter(p =>
-                (p.aluno || '').toLowerCase().includes(filter) ||
-                (p.email || '').toLowerCase().includes(filter)
-            );
+        groups.forEach(([groupName, presences]) => {
 
-            if (filtered.length > 0) {
-                hasRecords = true;
+            const rows = presences.map(reg => {
 
-                const groupHeader = document.createElement('tr');
-                groupHeader.innerHTML = `
-                    <td colspan="5" style="background-color:#f8fafc;font-weight:bold;color:#2563eb;border-left:4px solid #2563eb;">
-                        <i class="fas fa-users" style="margin-right:8px;"></i> Turma: ${groupName}
-                    </td>
-                `;
-                tableBody.appendChild(groupHeader);
+                const [dataStr = '---', horaStr = '---'] =
+                    (reg.data || '').split(' ');
 
-                filtered.forEach(reg => {
-                    const [dataStr = '---', horaStr = ''] = (reg.data || '').split(' ');
-                    const status = (reg.status || '').toUpperCase();
-
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
+                return `
+                    <tr>
                         <td><strong>${reg.aluno || '---'}</strong></td>
                         <td>${reg.email || '---'}</td>
                         <td>${dataStr}</td>
                         <td>${horaStr}</td>
-                        <td><span class="status-badge">${status}</span></td>
-                    `;
-                    tableBody.appendChild(tr);
-                });
-            }
-        });
+                        <td>
+                            <span class="status-badge">
+                                ${(reg.status || '').toUpperCase()}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
 
-        noData.style.display = hasRecords ? 'none' : 'block';
+            const card = document.createElement('div');
+
+            card.className = 'group-card';
+
+            card.innerHTML = `
+                <div class="group-header">
+                    <h3>
+                        <i class="fas fa-users"></i>
+                        ${groupName}
+                    </h3>
+                </div>
+
+                <table class="presence-table">
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Email</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        ${rows}
+                    </tbody>
+                </table>
+            `;
+
+            container.appendChild(card);
+        });
     }
 
     function setLoading(isLoading) {
-        if (!applyBtn) return;
-        applyBtn.disabled = isLoading;
-        applyBtn.innerHTML = isLoading
-            ? '<i class="fas fa-spinner fa-spin"></i> Filtrando...'
-            : '<i class="fas fa-filter"></i> Filtrar';
+
+        if (!refreshBtn) return;
+
+        refreshBtn.disabled = isLoading;
+
+        refreshBtn.innerHTML = isLoading
+            ? '<i class="fas fa-spinner fa-spin"></i> Carregando...'
+            : '<i class="fas fa-sync-alt"></i> Atualizar Dados';
     }
 
-    applyBtn?.addEventListener('click', fetchHistory);
+    refreshBtn?.addEventListener('click', fetchHistory);
 
-    // Logout simples (sem token pra limpar)
     document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
         e.preventDefault();
         window.location.href = 'login.html';
     });
 
     fetchHistory();
+
+    window.fetchHistory = fetchHistory;
 });
