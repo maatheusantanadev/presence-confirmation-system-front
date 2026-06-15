@@ -5,37 +5,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const API_URL = 'https://presence-confirmation-system.onrender.com';
 
-    async function fetchHistory() {
-        setLoading(true);
+    let loading = false;
 
-        try {
-            const response = await fetch(`${API_URL}/presence/history`);
+async function fetchHistory() {
 
-            if (!response.ok) {
-                throw new Error(`Falha ao buscar dados (${response.status})`);
-            }
+    if (loading) return;
 
-            const data = await response.json();
+    loading = true;
 
-            renderHistory(data);
+    setLoading(true);
 
-        } catch (error) {
-            console.error('Erro na requisição:', error);
+    try {
+        const response = await fetch(`${API_URL}/presence/history`);
 
-            container.innerHTML = `
-                <div class="group-card">
-                    <div class="group-header">
-                        <h3>Erro</h3>
-                    </div>
-                    <div style="padding:20px;color:red">
-                        Não foi possível carregar os registros.
-                    </div>
-                </div>
-            `;
-        } finally {
-            setLoading(false);
+        if (!response.ok) {
+            throw new Error(`Falha ao buscar dados (${response.status})`);
         }
+
+        const data = await response.json();
+
+        renderHistory(data);
+
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    } finally {
+        loading = false;
+        setLoading(false);
     }
+}
 
     function renderHistory(data) {
 
@@ -128,6 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     fetchHistory();
+
+setInterval(() => {
+    fetchHistory();
+}, 10000);
+
 
     window.fetchHistory = fetchHistory;
 });
