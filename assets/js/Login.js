@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('user_cpf', data.cpf);
 
         showMessage('Login realizado com sucesso!', 'success');
 

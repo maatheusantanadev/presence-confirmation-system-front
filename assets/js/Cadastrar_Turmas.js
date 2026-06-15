@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const groupData = {
     name: document.getElementById('groupName').value,
+    professor_cpf: localStorage.getItem('user_cpf'),
     student_registration_numbers: Array.from(selectedStudents)
 };
 
