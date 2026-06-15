@@ -20,9 +20,6 @@
             <a href="Alunos.html"><i class="fas fa-user-graduate"></i> Alunos</a>
             <a href="Listagem_presenca.html"><i class="fas fa-clipboard-check"></i> Presenças</a>
         </nav>
-        <div class="sidebar-footer">
-            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Sair</a>
-        </div>
     </aside>
 
     <main class="main-content">
@@ -76,8 +73,24 @@
             <div class="qr-container animate-in">
                 <div class="qr-header">
                     <h2><i class="fas fa-qrcode"></i> Registrar Presença</h2>
-                    <p>Peça aos alunos para lerem o código abaixo com o celular</p>
+                    <p>Selecione a turma e projete o código. Os alunos escaneiam o QR ou digitam o código.</p>
                 </div>
+
+                <!-- Seletor de turma (necessário para gerar o código daquela turma) -->
+                <div class="form-group" style="margin: 0 auto 1.25rem; max-width: 340px;">
+                    <select id="dashboardGroupSelect"
+                        style="width:100%; padding:.85rem 1rem; border:1px solid var(--border, #e2e8f0); border-radius:12px; font-size:1rem; background:#fff; appearance:none;">
+                        <option value="">Selecione a turma...</option>
+                    </select>
+                </div>
+
+                <!-- Código dinâmico (texto grande) + contador de renovação -->
+                <div id="codeDisplay"
+                    style="font-size:2.6rem; font-weight:800; letter-spacing:8px; color:#2563eb; text-align:center; line-height:1.1; margin-bottom:.25rem;">—</div>
+                <small id="codeCountdown"
+                    style="display:block; text-align:center; color:#64748b; margin-bottom:1.25rem; min-height:1em;"></small>
+
+                <!-- QR Code -->
                 <div id="qrcode" class="qr-code-box"></div>
             </div>
         </section>

@@ -48,9 +48,27 @@
                     </div>
                 </div>
 
+                <!-- Campo de código: usado quando o aluno DIGITA o código.
+                     Some automaticamente quando ele chega pela leitura do QR. -->
+                <div class="form-group" id="codeFieldGroup">
+                    <label for="codeInput">Código da Turma</label>
+                    <div class="autocomplete-wrapper">
+                        <i class="fas fa-key search-icon"></i>
+                        <input
+                            type="text"
+                            id="codeInput"
+                            placeholder="Ex.: A3K9P2"
+                            maxlength="6"
+                            autocomplete="off"
+                            inputmode="text"
+                            style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;"
+                        >
+                    </div>
+                </div>
+
                 <div class="info-alert">
                     <i class="fas fa-info-circle"></i>
-                    A presença será registrada para a sessão ativa nesta turma.
+                    Informe (ou escaneie) o código exibido pelo professor para confirmar a presença nesta turma.
                 </div>
 
                 <div class="card-actions">

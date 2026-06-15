@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const noData = document.getElementById('noData');
     const applyBtn = document.getElementById('applyFilters');
 
-    const API_URL = 'https://presence-confirmation-system.onrender.com:8000';
+    const API_URL = 'https://presence-confirmation-system.onrender.com';
 
     async function fetchHistory() {
         setLoading(true);
