@@ -83,10 +83,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const profCpf = localStorage.getItem('user_cpf');
 
         const groupData = {
-            name: document.getElementById('groupName').value,
-            professor_cpf: profCpf || "12345678901", // Fallback para teste se necessário
-            student_registration_numbers: Array.from(selectedStudents)
-        };
+    name: document.getElementById('groupName').value,
+    student_registration_numbers: Array.from(selectedStudents)
+};
 
         const token = localStorage.getItem('access_token');
         try {
